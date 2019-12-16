@@ -24,12 +24,12 @@ public class BookController {
     }
 
     @GetMapping("/{bookId}")
-    public Book getBook(@PathVariable Long bookId){
+    public Book getBook(@PathVariable("bookId") Long bookId){
         return bookRepository.findById(bookId).orElseThrow(RuntimeException::new);
     }
 
-    @DeleteMapping
-    public void deleteBook(@PathVariable Long bookId){
+    @DeleteMapping("/{bookId}")
+    public void deleteBook(@PathVariable("bookId") Long bookId){
         bookRepository.deleteById(bookId);
     }
 }
